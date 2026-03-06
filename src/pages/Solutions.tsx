@@ -3,7 +3,8 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { ArrowRight, ExternalLink, Server, MessageSquare, Waves, Play } from "lucide-react";
+import { ArrowRight, ExternalLink, Server, MessageSquare, Waves } from "lucide-react";
+import futureB2bImage from "@/assets/the_future_of_b2b.png";
 
 const fadeUp = {
   initial: { opacity: 0, y: 30 },
@@ -47,15 +48,7 @@ const Solutions = () => {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.3 }}
           >
-            <div className="bg-secondary rounded-lg aspect-video flex items-center justify-center relative">
-              <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent" />
-              <div className="text-center z-10">
-                <div className="w-12 h-12 rounded-full bg-primary/20 border border-primary/40 flex items-center justify-center mx-auto mb-3">
-                  <Play size={20} className="text-primary ml-0.5" />
-                </div>
-                <p className="text-sm text-muted-foreground">Watch: The Future of B2B AI</p>
-              </div>
-            </div>
+            <img src={futureB2bImage} alt="The Future of B2B AI" className="w-full h-full object-cover rounded-lg" />
           </motion.div>
         </div>
       </section>

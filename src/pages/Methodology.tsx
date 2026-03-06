@@ -1,9 +1,10 @@
+import { useState, useRef, useEffect } from "react";
 import { motion } from "framer-motion";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { Code2, BarChart3, Waves, CheckCircle2, LayoutGrid, Image, Shield, TrendingUp, ExternalLink } from "lucide-react";
+import { Code2, BarChart3, Waves, CheckCircle2, LayoutGrid, Image, Shield, TrendingUp, ExternalLink, Cpu, Database, Zap, Lock, GitBranch, Server, FileSearch, Microscope, BookOpen } from "lucide-react";
 
 const fadeUp = {
   initial: { opacity: 0, y: 30 },
@@ -12,7 +13,42 @@ const fadeUp = {
   transition: { duration: 0.6 },
 };
 
+const tabs = ["ICP Core", "CSI Framework", "Architecture"] as const;
+type Tab = typeof tabs[number];
+
 const Methodology = () => {
+  const [activeTab, setActiveTab] = useState<Tab>("ICP Core");
+  const location = useLocation();
+  const techSpecsRef = useRef<HTMLDivElement>(null);
+  const researchToolsRef = useRef<HTMLDivElement>(null);
+  const csiRef = useRef<HTMLDivElement>(null);
+  const archRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const hash = location.hash;
+    if (hash === "#tech-specs") {
+      setActiveTab("Architecture");
+      setTimeout(() => techSpecsRef.current?.scrollIntoView({ behavior: "smooth" }), 100);
+    } else if (hash === "#research-tools") {
+      setTimeout(() => researchToolsRef.current?.scrollIntoView({ behavior: "smooth" }), 100);
+    } else if (hash === "#csi-framework") {
+      setActiveTab("CSI Framework");
+      setTimeout(() => csiRef.current?.scrollIntoView({ behavior: "smooth" }), 100);
+    } else if (hash === "#architecture") {
+      setActiveTab("Architecture");
+      setTimeout(() => archRef.current?.scrollIntoView({ behavior: "smooth" }), 100);
+    }
+  }, [location.hash]);
+
+  const handleTabClick = (tab: Tab) => {
+    setActiveTab(tab);
+    if (tab === "CSI Framework") {
+      csiRef.current?.scrollIntoView({ behavior: "smooth" });
+    } else if (tab === "Architecture") {
+      archRef.current?.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
@@ -35,11 +71,12 @@ const Methodology = () => {
             Deep-dive into ICP and CSI proprietary frameworks driving problem-solving velocity through advanced neural orchestration.
           </p>
           <div className="flex gap-2">
-            {["ICP Core", "CSI Framework", "Architecture"].map((tab, i) => (
+            {tabs.map((tab) => (
               <button
                 key={tab}
+                onClick={() => handleTabClick(tab)}
                 className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
-                  i === 0 ? "bg-primary text-primary-foreground" : "bg-secondary text-muted-foreground hover:text-foreground"
+                  activeTab === tab ? "bg-primary text-primary-foreground" : "bg-secondary text-muted-foreground hover:text-foreground"
                 }`}
               >
                 {tab}
@@ -49,7 +86,7 @@ const Methodology = () => {
         </motion.div>
       </section>
 
-      {/* Stats */}
+      {/* ICP Core - Stats (always visible) */}
       <section className="pb-12 px-6 max-w-7xl mx-auto">
         <div className="grid md:grid-cols-3 gap-6">
           {[
@@ -71,6 +108,36 @@ const Methodology = () => {
             </motion.div>
           ))}
         </div>
+      </section>
+
+      {/* CSI Framework Section */}
+      <section ref={csiRef} className="pb-16 px-6 max-w-7xl mx-auto" id="csi-framework">
+        <motion.div {...fadeUp}>
+          <div className="flex items-center gap-2 mb-6">
+            <Cpu size={20} className="text-primary" />
+            <h2 className="text-2xl font-display font-bold text-foreground">CSI Framework</h2>
+          </div>
+          <div className="grid md:grid-cols-2 gap-6 mb-8">
+            {[
+              { icon: Zap, title: "Cognitive Signal Integration", desc: "Real-time neural signal processing across multi-modal data streams with adaptive weighting for context-aware outputs." },
+              { icon: Database, title: "Semantic Memory Layer", desc: "Persistent knowledge graph maintaining cross-session context with hierarchical memory consolidation." },
+              { icon: GitBranch, title: "Decision Branching Engine", desc: "Multi-path inference evaluation with probabilistic outcome scoring and confidence-weighted selection." },
+              { icon: Lock, title: "Integrity Verification", desc: "Continuous output validation against ground-truth benchmarks with automated bias detection and correction." },
+            ].map((item, i) => (
+              <motion.div key={item.title} className="stat-card card-hover" {...fadeUp} transition={{ ...fadeUp.transition, delay: i * 0.1 }}>
+                <div className="flex items-start gap-4">
+                  <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
+                    <item.icon size={20} className="text-primary" />
+                  </div>
+                  <div>
+                    <h3 className="font-display font-semibold text-foreground mb-1">{item.title}</h3>
+                    <p className="text-sm text-muted-foreground">{item.desc}</p>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
       </section>
 
       {/* System Flow Diagram */}
@@ -106,6 +173,62 @@ const Methodology = () => {
         </motion.div>
       </section>
 
+      {/* Architecture Section */}
+      <section ref={archRef} className="pb-16 px-6 max-w-7xl mx-auto" id="architecture">
+        <motion.div {...fadeUp}>
+          <div className="flex items-center gap-2 mb-6">
+            <Server size={20} className="text-primary" />
+            <h2 className="text-2xl font-display font-bold text-foreground">Architecture & Tech Specs</h2>
+          </div>
+          <div ref={techSpecsRef} id="tech-specs" className="grid md:grid-cols-3 gap-6 mb-8">
+            {[
+              { label: "Compute Layer", specs: ["Distributed GPU clusters", "Auto-scaling inference pods", "Sub-10ms latency routing", "99.99% uptime SLA"] },
+              { label: "Data Pipeline", specs: ["Stream processing at 4.8 GB/s", "Multi-format ingestion (JSON, CSV, API)", "Real-time ETL transformations", "End-to-end encryption"] },
+              { label: "API Gateway", specs: ["RESTful & GraphQL endpoints", "OAuth 2.0 + JWT auth", "Rate limiting & throttling", "Webhook event streaming"] },
+            ].map((tier, i) => (
+              <motion.div key={tier.label} className="stat-card card-hover" {...fadeUp} transition={{ ...fadeUp.transition, delay: i * 0.1 }}>
+                <h3 className="font-display font-semibold text-foreground mb-4">{tier.label}</h3>
+                <ul className="space-y-2">
+                  {tier.specs.map((spec) => (
+                    <li key={spec} className="flex items-center gap-2 text-sm text-muted-foreground">
+                      <CheckCircle2 size={14} className="text-primary flex-shrink-0" /> {spec}
+                    </li>
+                  ))}
+                </ul>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
+      </section>
+
+      {/* Research Tools Section */}
+      <section ref={researchToolsRef} className="pb-16 px-6 max-w-7xl mx-auto" id="research-tools">
+        <motion.div {...fadeUp}>
+          <div className="flex items-center gap-2 mb-6">
+            <Microscope size={20} className="text-primary" />
+            <h2 className="text-2xl font-display font-bold text-foreground">Research Tools</h2>
+          </div>
+          <div className="grid md:grid-cols-3 gap-6">
+            {[
+              { icon: FileSearch, title: "Citation Verification Engine", desc: "Automated cross-referencing against 200M+ academic papers with confidence scoring and source credibility analysis." },
+              { icon: Microscope, title: "Hypothesis Testing Sandbox", desc: "Interactive environment for formulating and stress-testing hypotheses with simulated datasets and statistical validation." },
+              { icon: BookOpen, title: "Dataset Cross-Referencing", desc: "Multi-source dataset alignment with schema mapping, anomaly detection, and automated correlation discovery." },
+            ].map((tool, i) => (
+              <motion.div key={tool.title} className="stat-card card-hover" {...fadeUp} transition={{ ...fadeUp.transition, delay: i * 0.1 }}>
+                <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
+                  <tool.icon size={24} className="text-primary" />
+                </div>
+                <h3 className="font-display font-semibold text-lg mb-2 text-foreground">{tool.title}</h3>
+                <p className="text-sm text-muted-foreground mb-4">{tool.desc}</p>
+                <Link to="/solutions">
+                  <Button variant="outline" size="sm">Learn More</Button>
+                </Link>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
+      </section>
+
       {/* Choose Your Path */}
       <section className="pb-20 px-6 max-w-7xl mx-auto text-center">
         <motion.div {...fadeUp}>
@@ -114,9 +237,9 @@ const Methodology = () => {
         </motion.div>
         <div className="grid md:grid-cols-3 gap-6">
           {[
-            { icon: Code2, title: "Technical Professional", features: ["API-first integration", "Custom neural weights", "Real-time debugging console"], cta: "View Tech Specs", link: "/methodology" },
+            { icon: Code2, title: "Technical Professional", features: ["API-first integration", "Custom neural weights", "Real-time debugging console"], cta: "View Tech Specs", link: "/methodology#tech-specs" },
             { icon: BarChart3, title: "Strategic Management", features: ["KPI dashboard generation", "Resource allocation AI", "Risk assessment reports"], cta: "Explore Dashboards", link: "/dashboard" },
-            { icon: Waves, title: "Academic & Research", features: ["Citation verification", "Hypothesis testing sandbox", "Dataset cross-referencing"], cta: "Research Tools", link: "/methodology" },
+            { icon: Waves, title: "Academic & Research", features: ["Citation verification", "Hypothesis testing sandbox", "Dataset cross-referencing"], cta: "Research Tools", link: "/methodology#research-tools" },
           ].map((path, i) => (
             <motion.div key={path.title} className="stat-card card-hover text-left" {...fadeUp} transition={{ ...fadeUp.transition, delay: i * 0.15 }}>
               <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4">

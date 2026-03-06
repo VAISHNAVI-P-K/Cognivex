@@ -1,73 +1,138 @@
-# Welcome to your Lovable project
+# Project Title: Cognivex AI – Cognitive Sustainability Monitoring Platform
+Week-4 Internship Project: Website Development Project
 
-## Project info
+## Project Description
 
-**URL**: https://cognivex-vision.lovable.app/
+This project presents **Cognivex AI**, a web-based platform designed to monitor and analyze **human cognitive performance in high-automation environments**. The system evaluates how individuals interact with automated tools and provides insights into decision quality, problem-solving efficiency, and automation reliance.
 
-## How can I edit this code?
+The platform introduces a key metric called the **Cognitive Sustainability Index (CSI)**, which measures the balance between human cognitive engagement and automated assistance. Through an interactive dashboard and analytics modules, Cognivex AI provides organizations and researchers with a structured approach to understanding **human–AI collaboration dynamics**.
 
-There are several ways of editing your application.
 
-**Use Lovable**
 
-Simply visit the [Lovable Project](https://cognivex-vision.lovable.app/) and start prompting.
+## Project Objective
 
-Changes made via Lovable will be committed automatically to this repo.
+* Modern workflows increasingly rely on automation and AI systems, which can influence human decision-making and cognitive engagement.
 
-**Use your preferred IDE**
+* The objective of this project is to design a platform that analyzes cognitive performance patterns and automation dependency.
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+* The system aims to help organizations and researchers **monitor cognitive sustainability, identify potential decision fatigue, and support balanced human–AI collaboration**.
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
 
-Follow these steps:
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+## Project Workflow
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+1. **Platform Design & Concept Development**
 
-# Step 3: Install the necessary dependencies.
-npm i
+   ▪︎ Defined the concept of **Cognitive Sustainability Monitoring**
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
+   ▪︎ Designed the **Cognitive Sustainability Index (CSI)** as the central analytical metric
 
-**Edit a file directly in GitHub**
+   ▪︎ Planned the system architecture and dashboard structure
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+2. **User Interface & Website Development**
 
-**Use GitHub Codespaces**
+   ▪︎ Designed a modern, responsive interface for the Cognivex platform
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+   ▪︎ Implemented structured navigation and professional layout
 
-## What technologies are used for this project?
+   ▪︎ Developed interactive UI components for analytics visualization
 
-This project is built with:
+3. **Cognitive Metrics Framework**
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+   The system analyzes multiple cognitive performance indicators including:
 
-## How can I deploy this project?
+   • Problem Solving Speed
 
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
+   • Decision Accuracy
 
-## Can I connect a custom domain to my Lovable project?
+   • Error Recovery Time
 
-Yes, you can!
+   • Memory Recall Under Cognitive Load
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+4. **Automation Dependency Analysis**
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+   ▪︎ Evaluates patterns of user reliance on automated tools
+
+   ▪︎ Measures interaction frequency with AI-assisted features
+
+   ▪︎ Identifies potential overdependence on automation systems
+
+5. **Dashboard & Analytics Visualization**
+
+   ▪︎ Developed a centralized analytics dashboard
+
+   ▪︎ Displays real-time cognitive performance metrics
+
+   ▪︎ Visualizes the **Cognitive Sustainability Index (CSI)** through charts and performance indicators
+
+6. **System Integration & Deployment Structure**
+
+   ▪︎ Organized frontend and backend components
+
+   ▪︎ Structured repository for scalability and maintainability
+
+   ▪︎ Prepared the platform for future AI analytics integration
+
+
+
+## Platform Features
+
+▪︎ **Cognitive Sustainability Index (CSI)** to measure cognitive engagement
+
+▪︎ **Interactive analytics dashboard** for cognitive performance monitoring
+
+▪︎ **Automation dependency tracking** to analyze AI reliance patterns
+
+▪︎ **Performance trend visualization** for decision and problem-solving analysis
+
+▪︎ **Responsive website interface** designed for accessibility and usability
+
+
+
+## Tools and Technologies Used
+
+▪︎ **React / Next.js** – Frontend development framework
+
+▪︎ **Tailwind CSS** – UI styling and responsive design
+
+▪︎ **JavaScript / TypeScript** – Web application logic
+
+▪︎ **Node.js** – Backend services and API integration
+
+▪︎ **PostgreSQL** – Data storage and analytics records
+
+▪︎ **GitHub** – Version control and project management
+
+
+
+## Output
+
+▪︎ Developed a **fully structured Cognivex AI website platform**
+
+▪︎ Implemented a **conceptual cognitive analytics framework**
+
+▪︎ Designed a **professional dashboard interface for CSI monitoring**
+
+▪︎ Created a scalable repository structure for future AI integration
+
+▪︎ Prepared the platform for **advanced cognitive analytics and machine learning expansion**
+
+
+
+## Key Insights
+
+▪︎ Automation can significantly influence human decision-making patterns
+
+▪︎ Monitoring cognitive engagement can help prevent decision fatigue and skill degradation
+
+▪︎ Balanced human–AI interaction improves long-term productivity and decision quality
+
+▪︎ Analytical platforms like Cognivex AI can support sustainable human intelligence in automated environments
+
+
+
+## Conclusion
+
+This project demonstrates the design and development of a **cognitive monitoring platform for AI-driven environments**. By introducing the **Cognitive Sustainability Index (CSI)** and providing an interactive analytics interface, Cognivex AI offers a structured approach to understanding and maintaining human cognitive performance alongside automation technologies.
+
+The project establishes a strong foundation for future enhancements such as **machine learning-based cognitive prediction models, advanced analytics dashboards, and enterprise-scale deployment**.

@@ -3,7 +3,8 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { ArrowRight, ExternalLink, Server, MessageSquare, Waves, Play } from "lucide-react";
+import { ArrowRight, ExternalLink, Server, MessageSquare, Waves } from "lucide-react";
+import futureB2bImage from "@/assets/the_future_of_b2b.png";
 
 const fadeUp = {
   initial: { opacity: 0, y: 30 },
